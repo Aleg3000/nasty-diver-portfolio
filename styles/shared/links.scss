@@ -1,0 +1,17 @@
+%button {
+  @extend %description-21;
+
+  height: 3.3rem;
+  width: fit-content;
+  border: 1px solid $color-white;
+  border-radius: 7rem;
+  padding: 0 1rem;
+  cursor: pointer;
+
+  @include media('<phone') {
+    padding: 1.2rem 2rem;
+    height: 5.4rem;
+    font-size: 3rem;
+    line-height: 100%;
+  }
+}

@@ -1,0 +1,6 @@
+footer.footer
+  .footer__wrapper
+    p.footer__name=footer.data.name[0].text
+    .footer__socials__items
+      each item in footer.data.body[0].items
+        p.footer__socials__item=item.socialtitle[0].text

@@ -1,0 +1,52 @@
+extends ../base.pug
+
+block variables
+  - var template = 'home'
+
+block content
+  .home(data-background="#1E1E1E" data-color="#F9F1E7")
+    .home__wrapper
+      .home__header
+        .home__header__logo='sdfgsd'
+        .home__header__link=home.data.anchorlink[0].text
+      .home__main
+        .home__main__title-wrapper
+          h1.home__main__title=home.data.title[0].text
+          .home__main__subtitle
+            h2.home__main__subtitle__first=home.data.subtitlefirst[0].text
+            p.home__main__subtitle__label=home.data.subtitlelabel[0].text
+            .home__main__subtitle__label-mobile
+              !=ctx.prismicH.asHTML(home.data.subtitlelabelmobile).replace(/\n/g, '<br>')
+            //- p.home__main__subtitle__label-mobile=home.data.subtitlelabelmobile[0].text
+            h2.home__main__subtitle__second=home.data.subtitlesecond[0].text
+        .home__main__description__wrapper
+          h3.home__main__description__title=home.data.descriptiontitle[0].text
+          p.home__main__description__text=home.data.description[0].text
+
+      each section in home.data.body
+        if section.slice_type === 'project'
+          section.home__section
+            .home__section__info
+              .home__section__info__text
+                h3.project__title=section.primary.projecttitle[0].text
+                .project__label
+                  !=ctx.prismicH.asHTML(section.primary.projectlabel).replace(/\n/g, '<br>')
+              a.project__button(href=Link(section.primary.projectlink))=section.primary.projectlinktext[0].text
+            .project__media__wrapper
+              .project__label-mobile
+                    !=ctx.prismicH.asHTML(section.primary.projectlabel).replace(/\n/g, '<br>')
+              figure.project__media
+                img.project__media__image(alt=section.primary.projectimage.alt src=section.primary.projectimage.url)
+
+        if section.slice_type === 'footer'
+          .home__footer
+            .home__footer__wrapper
+              .home__footer__left
+                h2.home__footer__left__title=section.primary.footertitle[0].text
+                .home__footer__left__text!=ctx.prismicH.asHTML(section.primary.footerlabel).replace(/\n/g, '<br>')
+              .home__footer__right
+                .home__footer__right__list
+                  .home__footer__right__list__item!=ctx.prismicH.asHTML(section.primary.functionsleft).replace(/\n/g, '<br>')
+                  .home__footer__right__list__item!=ctx.prismicH.asHTML(section.primary.functionscenter).replace(/\n/g, '<br>')
+                  .home__footer__right__list__item!=ctx.prismicH.asHTML(section.primary.functionsright).replace(/\n/g, '<br>')
+                button.home__footer__right__button=section.primary.mailtext[0].text

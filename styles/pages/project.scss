@@ -1,0 +1,299 @@
+.project {
+  // @extend %page;
+
+
+}
+
+.project__wrapper {
+
+}
+
+.project__header {
+  @extend %padding;
+
+  display: flex;
+  // height: 7.5rem;
+  justify-content: space-between;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid $color-white;
+}
+
+.project__header__button {
+  @extend %button;
+}
+
+.project__header__projectnumber {
+  @extend %button;
+}
+
+.project__main {
+  // height: calc(100vh - 7.5rem);
+  @extend %padding;
+
+  padding-top: 10rem;
+  padding-bottom: 21rem;
+  // margin: 0 auto;
+  // max-width: 120rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  // border-bottom: 1px solid $color-white;
+
+  @include media('<phone') {
+    display: none;
+  }
+}
+
+.project__main__title-wrapper {
+
+}
+
+.project__main__title {
+  @extend %title-187;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.project__main__subtitle {
+  @extend %title-187;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 1rem;
+}
+
+.project__main__subtitle__first {
+
+}
+
+.project__main__subtitle__label {
+  @extend %description-21;
+
+  line-height: 100%;
+  position: relative;
+  bottom: 2.2rem;
+}
+
+.project__main__subtitle__second {
+
+}
+
+.project__main__description__wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+}
+
+.project__main__description__title {
+  @extend %title-21;
+}
+
+.project__main__description__text {
+  @extend %description-21;
+  width: 56rem;
+  font-weight: 400;
+}
+
+.project__main__mobile {
+  @extend %padding;
+
+  display: none;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  @include media('<phone') {
+    display: block;
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+  }
+}
+
+.project__main__title-wrapper__mobile {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+
+  display: none;
+
+  @include media('<phone') {
+    display: flex;
+  }
+}
+
+.project__main__title__mobile {
+  @extend %title-187;
+}
+
+.project__main__subtitle__label__mobile {
+  @extend %description-15;
+
+  width: 90%;
+}
+
+
+// content
+
+
+.project__content {
+  @extend %padding;
+
+  padding-bottom: 4rem;
+  border-bottom: 1px solid $color-white;
+
+  @include media('<phone') {
+    padding-bottom: 10rem;
+  }
+}
+
+.project__content__wrapper {
+  position: relative;
+}
+
+.project__content__info {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+  @include media('<phone') {
+    position: relative;
+  }
+}
+
+.project__content__info__skills {
+  @extend %description-21;
+
+  @include media('<phone') {
+
+  }
+}
+
+.project__content__info__skill {
+
+}
+
+.project__content__info__descriptions {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.project__content__info__name {
+  @extend %title-21;
+}
+
+.project__content__info__functions {
+  @extend %description-15;
+
+  @include media('<phone') {
+    font-size: 2rem;
+  }
+}
+
+.project__content__info__function {
+
+}
+
+.project__content__gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  align-items: center;
+
+  @include media('<phone') {
+    margin: 10rem 0;
+  }
+}
+
+.project__gallery__media {
+  height: 37rem;
+  position: relative;
+  width: 67rem;
+
+  @include media('<phone') {
+    height: 74rem;
+    width: 100%;
+  }
+}
+
+.project__gallery__media__image {
+  @extend %cover;
+
+  object-fit: cover;
+}
+
+.project__content__links {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+  @include media('<phone') {
+    position: relative;
+  }
+}
+
+.project__content__link {
+  @extend %button;
+}
+
+.project__footer {
+  @extend %padding;
+
+  padding-top: 12rem;
+  padding-bottom: 7rem;
+
+  @include media('<phone') {
+    padding-top: 10rem;
+    padding-bottom: 11rem;
+  }
+}
+
+.project__footer__info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.project__footer__info__text {
+  @extend %title-21;
+  display: block;
+
+  & p {
+    line-height: 130%;
+  }
+
+  @include media('<phone') {
+    display: none;
+  }
+}
+
+.project__footer__info__text-mobile {
+  @extend %title-21;
+
+  display: none;
+
+  & p {
+    line-height: 130%;
+  }
+
+  @include media('<phone') {
+    display: block;
+  }
+
+}
+
+.project__footer__mail-button {
+  @extend %button;
+}
+
+
+
+

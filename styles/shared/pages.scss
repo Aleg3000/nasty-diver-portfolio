@@ -1,0 +1,20 @@
+%page {
+  @extend %cover;
+
+  opacity: 0;
+  visibility: hidden;
+}
+
+%page__wrapper {
+  color: inherit;
+}
+
+%padding {
+  padding: 0 20rem;
+  width: 100%;
+
+  @include media('<phone') {
+    width: 100%;
+    padding: 0 3rem;
+  }
+}

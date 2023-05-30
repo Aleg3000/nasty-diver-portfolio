@@ -1,0 +1,56 @@
+extends ../base.pug
+
+block variables
+  - var template = 'project'
+
+block content
+  .project(data-background="#1E1E1E" data-color="#F9F1E7")
+    .project__wrapper
+      .project__header
+        a(href=Link(project.data.homelink)).project__header__button=project.data.returnbutton[0].text
+        .project__header__projectnumber=project.data.projectnumber[0].text
+      .project__main
+        .project__main__title-wrapper
+          h1.project__main__title
+            span=project.data.title[0].text.split(' ')[0]
+            span=project.data.title[0].text.split(' ')[1]
+          .project__main__subtitle
+            h2.project__main__subtitle__first=project.data.subtitlefirst[0].text
+            p.project__main__subtitle__label=project.data.subtitlelabel[0].text
+            h2.project__main__subtitle__second=project.data.subtitlesecond[0].text
+      .project__main__mobile
+        .project__main__title-wrapper__mobile
+          h1.project__main__title__mobile
+            span=project.data.title[0].text
+            br
+            span=project.data.subtitlefirst[0].text
+            span=project.data.subtitlesecond[0].text
+          p.project__main__subtitle__label__mobile=project.data.subtitlelabel[0].text
+      .project__content
+        .project__content__wrapper
+          .project__content__info
+            .project__content__info__skills
+              each skill in project.data.skills
+                p.project__content__info__skill=skill.text
+            .project__content__info__descriptions
+              .project__content__info__name=project.data.name[0].text
+              .project__content__info__functions
+                each item in project.data.functions
+                  p.project__content__info__function=item.text
+          .project__content__gallery
+            each media in project.data.body[0].items
+              figure.project__gallery__media
+                img.project__gallery__media__image(alt=media.image.alt src=media.image.url)
+          .project__content__links
+            a(href=Link(project.data.homelink)).project__content__link=project.data.returnbutton[0].text
+            a(href=Link(project.data.nextlink)).project__content__link=project.data.nextbutton[0].text
+      .project__footer
+        .project__footer__info
+          .project__footer__info__text
+            each par in project.data.conclusion
+              p=par.text
+          .project__footer__info__text-mobile
+            p='open'
+            p='to new'
+            p='collaborations'
+          .project__footer__mail-button=project.data.mailbutton[0].text

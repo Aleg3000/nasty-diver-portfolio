@@ -1,0 +1,28 @@
+%title-21 {
+  font-family: $font-space-grotesk;
+  font-size: 2.1rem;
+  font-weight: 700;
+  line-height: 100%;
+  font-style: normal;
+  text-transform: lowercase;
+  color: $color-white;
+
+  @include media('<phone') {
+    font-size: 3rem;
+  }
+}
+
+%title-187 {
+  font-family: $font-space-grotesk;
+  font-size: 18.7rem;
+  font-weight: 700;
+  line-height: 100%;
+  font-style: normal;
+  text-transform: lowercase;
+  color: $color-white;
+
+  @include media('<phone') {
+    font-size: 9rem;
+  }
+}
+
