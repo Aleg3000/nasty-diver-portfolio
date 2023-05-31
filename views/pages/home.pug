@@ -9,6 +9,7 @@ block content
       .home__header
         .home__header__logo='sdfgsd'
         .home__header__link=home.data.anchorlink[0].text
+        .break-line
       .home__main
         .home__main__title-wrapper
           h1.home__main__title=home.data.title[0].text
@@ -22,6 +23,7 @@ block content
         .home__main__description__wrapper
           h3.home__main__description__title=home.data.descriptiontitle[0].text
           p.home__main__description__text=home.data.description[0].text
+        .break-line
 
       each section in home.data.body
         if section.slice_type === 'project'
@@ -37,6 +39,7 @@ block content
                     !=ctx.prismicH.asHTML(section.primary.projectlabel).replace(/\n/g, '<br>')
               figure.project__media
                 img.project__media__image(alt=section.primary.projectimage.alt data-src=section.primary.projectimage.url)
+            .break-line
 
         if section.slice_type === 'footer'
           .home__footer
@@ -50,3 +53,5 @@ block content
                   .home__footer__right__list__item!=ctx.prismicH.asHTML(section.primary.functionscenter).replace(/\n/g, '<br>')
                   .home__footer__right__list__item!=ctx.prismicH.asHTML(section.primary.functionsright).replace(/\n/g, '<br>')
                 button.home__footer__right__button=section.primary.mailtext[0].text
+
+      include  ../partials/footer

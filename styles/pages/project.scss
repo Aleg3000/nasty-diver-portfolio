@@ -1,22 +1,23 @@
 .project {
-  // @extend %page;
+  @extend %page;
 
 
 }
 
 .project__wrapper {
-
+  position: relative;
 }
 
 .project__header {
   @extend %padding;
 
+  position: relative;
   display: flex;
   // height: 7.5rem;
   justify-content: space-between;
   padding-top: 2rem;
   padding-bottom: 2rem;
-  border-bottom: 1px solid $color-white;
+  // border-bottom: 1px solid $color-white;
 }
 
 .project__header__button {
@@ -142,8 +143,9 @@
 .project__content {
   @extend %padding;
 
+  position: relative;
   padding-bottom: 4rem;
-  border-bottom: 1px solid $color-white;
+  // border-bottom: 1px solid $color-white;
 
   @include media('<phone') {
     padding-bottom: 10rem;

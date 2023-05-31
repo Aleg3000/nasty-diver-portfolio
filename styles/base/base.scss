@@ -47,7 +47,7 @@ button {
 }
 
 img {
-  // opacity: 0;
+  opacity: 0;
   transition: opacity 0.4s ease;
   vertical-align: middle;
 
@@ -92,4 +92,12 @@ img {
     transform-origin: center center 0.5em;
     vertical-align: middle;
   }
+}
+
+.break-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border-bottom: 1px solid $color-white;
 }

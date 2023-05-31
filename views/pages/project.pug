@@ -9,6 +9,7 @@ block content
       .project__header
         a(href=Link(project.data.homelink)).project__header__button=project.data.returnbutton[0].text
         .project__header__projectnumber=project.data.projectnumber[0].text
+        .break-line
       .project__main
         .project__main__title-wrapper
           h1.project__main__title
@@ -44,6 +45,7 @@ block content
           .project__content__links
             a(href=Link(project.data.homelink)).project__content__link=project.data.returnbutton[0].text
             a(href=Link(project.data.nextlink)).project__content__link=project.data.nextbutton[0].text
+        .break-line
       .project__footer
         .project__footer__info
           .project__footer__info__text
@@ -54,3 +56,5 @@ block content
             p='to new'
             p='collaborations'
           .project__footer__mail-button=project.data.mailbutton[0].text
+
+      include  ../partials/footer

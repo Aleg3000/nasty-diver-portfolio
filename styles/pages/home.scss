@@ -1,7 +1,8 @@
 .home {
-  // @extend %page;
+  @extend %page;
 
 
+// opacity: 0;
 }
 
 .home__wrapper {
@@ -11,12 +12,12 @@
 .home__header {
   @extend %padding;
 
+  position: relative;
   display: flex;
-  // height: 7.5rem;
   justify-content: space-between;
   padding-top: 2rem;
   padding-bottom: 2rem;
-  border-bottom: 1px solid $color-white;
+  // border-bottom: 1px solid $color-white;
 }
 
 .home__header__logo {
@@ -30,14 +31,14 @@
 .home__main {
   @extend %padding;
 
-  // height: calc(100vh - 7.5rem);
+  position: relative;
   padding-top: 10rem;
   padding-bottom: 6rem;
   display: flex;
   flex-direction: column;
   gap: 15rem;
   justify-content: space-between;
-  border-bottom: 1px solid $color-white;
+  // border-bottom: 1px solid $color-white;
 
   @include media('<phone') {
     padding-top: 10rem;
@@ -120,11 +121,12 @@
 .home__section {
   @extend %padding;
 
+  position: relative;
   padding-top: 4rem;
   padding-bottom: 4rem;
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid $color-white;
+  // border-bottom: 1px solid $color-white;
 
   @include media('<phone') {
     padding-top: 10rem;
@@ -312,3 +314,4 @@
 
   width: 100%;
 }
+
