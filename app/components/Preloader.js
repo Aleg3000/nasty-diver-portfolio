@@ -31,6 +31,7 @@ export default class Preloader extends Component {
     each(this.elements.images, image => {
       image.onload = _ => {
         this.onAssetLoaded(image)
+        image.classList.add('loaded')
       }
       image.src = image.getAttribute('data-src')
     })
