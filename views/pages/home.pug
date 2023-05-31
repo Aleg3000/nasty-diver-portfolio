@@ -36,7 +36,7 @@ block content
               .project__label-mobile
                     !=ctx.prismicH.asHTML(section.primary.projectlabel).replace(/\n/g, '<br>')
               figure.project__media
-                img.project__media__image(alt=section.primary.projectimage.alt src=section.primary.projectimage.url)
+                img.project__media__image(alt=section.primary.projectimage.alt data-src=section.primary.projectimage.url)
 
         if section.slice_type === 'footer'
           .home__footer

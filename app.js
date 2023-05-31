@@ -72,7 +72,7 @@ const handleRequest = async () => {
 app.get('/', async (req, res) => {
   const defaults = await handleRequest()
   const home = await client.getSingle('homepage')
-  console.dir(home.data, {depth: 10})
+  // console.dir(home.data, {depth: 10})
   res.render('pages/home', {
     ...defaults,
     home,

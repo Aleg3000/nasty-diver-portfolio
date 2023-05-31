@@ -40,7 +40,7 @@ block content
           .project__content__gallery
             each media in project.data.body[0].items
               figure.project__gallery__media
-                img.project__gallery__media__image(alt=media.image.alt src=media.image.url)
+                img.project__gallery__media__image(alt=media.image.alt data-src=media.image.url)
           .project__content__links
             a(href=Link(project.data.homelink)).project__content__link=project.data.returnbutton[0].text
             a(href=Link(project.data.nextlink)).project__content__link=project.data.nextbutton[0].text
