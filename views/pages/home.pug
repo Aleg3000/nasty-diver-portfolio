@@ -8,21 +8,20 @@ block content
     .home__wrapper
       .home__header
         .home__header__logo='sdfgsd'
-        .home__header__link=home.data.anchorlink[0].text
+        a.home__header__link(href=`mailto:${home.data.linktomail[0].text}` data-type='out')=home.data.anchorlink[0].text
         .break-line
       .home__main
         .home__main__title-wrapper
           h1.home__main__title=home.data.title[0].text
-          .home__main__subtitle
+          .home__main__subtitle(data-animation="title")
             h2.home__main__subtitle__first=home.data.subtitlefirst[0].text
+            h2.home__main__subtitle__second=home.data.subtitlesecond[0].text
             p.home__main__subtitle__label=home.data.subtitlelabel[0].text
             .home__main__subtitle__label-mobile
               !=ctx.prismicH.asHTML(home.data.subtitlelabelmobile).replace(/\n/g, '<br>')
-            //- p.home__main__subtitle__label-mobile=home.data.subtitlelabelmobile[0].text
-            h2.home__main__subtitle__second=home.data.subtitlesecond[0].text
         .home__main__description__wrapper
-          h3.home__main__description__title=home.data.descriptiontitle[0].text
-          p.home__main__description__text=home.data.description[0].text
+          h3.home__main__description__title(data-animation='paragraph')=home.data.descriptiontitle[0].text
+          .home__main__description__text(data-animation='paragraph')=home.data.description[0].text
         .break-line
 
       each section in home.data.body
@@ -52,6 +51,6 @@ block content
                   .home__footer__right__list__item!=ctx.prismicH.asHTML(section.primary.functionsleft).replace(/\n/g, '<br>')
                   .home__footer__right__list__item!=ctx.prismicH.asHTML(section.primary.functionscenter).replace(/\n/g, '<br>')
                   .home__footer__right__list__item!=ctx.prismicH.asHTML(section.primary.functionsright).replace(/\n/g, '<br>')
-                button.home__footer__right__button=section.primary.mailtext[0].text
+                a.home__footer__right__button(href=`mailto:${home.data.linktomail[0].text}` data-type='out')=section.primary.mailtext[0].text
 
       include  ../partials/footer

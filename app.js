@@ -73,6 +73,7 @@ app.get('/', async (req, res) => {
   const defaults = await handleRequest()
   const home = await client.getSingle('homepage')
   // console.dir(home.data, {depth: 10})
+  console.log(defaults.footer.data.body[0].items)
   res.render('pages/home', {
     ...defaults,
     home,
@@ -82,6 +83,7 @@ app.get('/', async (req, res) => {
 app.get('/project/:uid', async (req, res) => {
   const defaults = await handleRequest()
   const project = await client.getByUID('project', req.params.uid)
+  console.log(project.data)
   res.render('pages/project', {
     ...defaults,
     project

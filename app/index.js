@@ -30,7 +30,7 @@ class App {
   onPreloaded() {
     this.preloader.destroy()
 
-    // this.onResize()
+    this.onResize()
 
     this.page.show()
   }
@@ -71,7 +71,7 @@ class App {
 
       this.page.create()
 
-      // this.onResize()
+      this.onResize()
 
       this.page.show()
 
@@ -91,6 +91,8 @@ class App {
     const links = document.querySelectorAll('a')
 
     each(links, link => {
+      if (link.getAttribute('data-type') === 'out') return
+
       link.onclick = e => {
         const { href } = link
 
@@ -103,6 +105,14 @@ class App {
 
   addEventListeners() {
     window.addEventListener('popstate', this.onPopState.bind(this))
+
+    window.addEventListener('resize', this.onResize.bind(this))
+  }
+
+  onResize() {
+    if (this.page && this.page.onResize) {
+      this.page.onResize()
+    }
   }
 }
 

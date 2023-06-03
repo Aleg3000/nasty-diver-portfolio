@@ -8,7 +8,7 @@ html(class=isDesktop ? 'desktop' : isTablet ? 'tablet' : isPhone ? 'phone' : '' 
 
     base(href='/')
 
-    title=meta.data.title
+    title=meta.data.title[0].text
 
     meta(name='description' content=meta.data.description)
 

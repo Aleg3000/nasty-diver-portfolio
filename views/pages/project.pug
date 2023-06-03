@@ -15,10 +15,10 @@ block content
           h1.project__main__title
             span=project.data.title[0].text.split(' ')[0]
             span=project.data.title[0].text.split(' ')[1]
-          .project__main__subtitle
+          .project__main__subtitle(data-animation="title")
             h2.project__main__subtitle__first=project.data.subtitlefirst[0].text
-            p.project__main__subtitle__label=project.data.subtitlelabel[0].text
             h2.project__main__subtitle__second=project.data.subtitlesecond[0].text
+            p.project__main__subtitle__label=project.data.subtitlelabel[0].text
       .project__main__mobile
         .project__main__title-wrapper__mobile
           h1.project__main__title__mobile
@@ -55,6 +55,6 @@ block content
             p='open'
             p='to new'
             p='collaborations'
-          .project__footer__mail-button=project.data.mailbutton[0].text
+          a.project__footer__mail-button(href=`mailto:${project.data.mail[0].text}` data-type='out')=project.data.mailbutton[0].text
 
       include  ../partials/footer

@@ -59,7 +59,7 @@
   @extend %title-187;
 
   display: flex;
-  justify-content: space-between;
+  justify-content: start;
   align-items: end;
 }
 
@@ -71,6 +71,7 @@
   @extend %description-21;
 
   position: relative;
+  opacity: 0;
   bottom: 2.2rem;
 
   @include media('<phone') {
@@ -86,6 +87,7 @@
   bottom: 0.8rem;
   font-size: 2rem;
   line-height: 100%;
+  opacity: 0;
 
   @include media('<phone') {
     display: block;
@@ -104,12 +106,15 @@
 
 .home__main__description__title {
   @extend %title-21;
+
+  opacity: 0;
 }
 
 .home__main__description__text {
   @extend %description-21;
   width: 56rem;
   font-weight: 400;
+  opacity: 0;
 
   @include media('<phone') {
     width: 27.2rem;
@@ -121,6 +126,7 @@
 .home__section {
   @extend %padding;
 
+  // height: 100vh;
   position: relative;
   padding-top: 4rem;
   padding-bottom: 4rem;
