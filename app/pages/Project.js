@@ -7,7 +7,8 @@ export default class Project extends Page {
       id: 'project',
       element: '.project',
       elements: {
-        link: '.project__link'
+        link: '.project__link',
+        wrapper: '.project__wrapper'
       }
     })
   }

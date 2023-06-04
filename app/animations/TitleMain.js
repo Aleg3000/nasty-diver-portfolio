@@ -4,8 +4,8 @@ export default class TitleMain {
   constructor({ element, elements }) {
     this.element = element
 
-    this.leftTitle = element.querySelector('.home__main__subtitle__first') || element.querySelector('.project__main__subtitle__first')
     this.rightTitle = element.querySelector('.home__main__subtitle__label') || element.querySelector('.project__main__subtitle__label')
+    this.leftTitle = element.querySelector('.home__main__subtitle__first') || element.querySelector('.project__main__subtitle__first')
     this.rightTitleMobile = element.querySelector('.home__main__subtitle__label-mobile') || element.querySelector('.project__main__subtitle__label-mobile')
     this.centerTitle = element.querySelector('.home__main__subtitle__second') || element.querySelector('.project__main__subtitle__second')
   }

@@ -3,6 +3,7 @@ import Home from "./pages/Home.js"
 import Project from "./pages/Project.js"
 
 import each from 'lodash/each.js'
+import normalizeWheel from 'normalize-wheel'
 
 class App {
   constructor() {
@@ -15,6 +16,8 @@ class App {
     this.addLinkListeners()
 
     this.addEventListeners()
+
+    this.update()
   }
 
   createContent() {
@@ -87,6 +90,44 @@ class App {
     })
   }
 
+  onTouchDown (event) {
+    // if (this.canvas && this.canvas.onTouchDown) {
+    //   this.canvas.onTouchDown(event)
+    // }
+
+    if (this.page && this.page.onTouchDown) {
+      this.page.onTouchDown(event)
+    }
+  }
+
+  onTouchMove (event) {
+    // if (this.canvas && this.canvas.onTouchMove) {
+    //   this.canvas.onTouchMove(event)
+    // }
+
+    if (this.page && this.page.onTouchDown) {
+      this.page.onTouchMove(event)
+    }
+  }
+
+  onTouchUp (event) {
+    // if (this.canvas && this.canvas.onTouchUp) {
+    //   this.canvas.onTouchUp(event)
+    // }
+
+    if (this.page && this.page.onTouchDown) {
+      this.page.onTouchUp(event)
+    }
+  }
+
+  onWheel(event) {
+    const normalizedWheel = normalizeWheel(event)
+
+    if (this.page && this.page.onWheel) {
+      this.page.onWheel(normalizedWheel)
+    }
+  }
+
   addLinkListeners() {
     const links = document.querySelectorAll('a')
 
@@ -106,6 +147,12 @@ class App {
   addEventListeners() {
     window.addEventListener('popstate', this.onPopState.bind(this))
 
+    window.addEventListener('wheel', this.onWheel.bind(this))
+
+    window.addEventListener('touchstart', this.onTouchDown.bind(this))
+    window.addEventListener('touchmove', this.onTouchMove.bind(this))
+    window.addEventListener('touchend', this.onTouchUp.bind(this))
+
     window.addEventListener('resize', this.onResize.bind(this))
   }
 
@@ -113,6 +160,14 @@ class App {
     if (this.page && this.page.onResize) {
       this.page.onResize()
     }
+  }
+
+  update() {
+    if (this.page && this.page.update) {
+      this.page.update()
+    }
+
+    this.frame = window.requestAnimationFrame(this.update.bind(this))
   }
 }
 
