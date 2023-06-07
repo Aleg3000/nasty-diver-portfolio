@@ -12,16 +12,25 @@
 .home__header {
   @extend %padding;
 
+  height: 7.5rem;
   position: relative;
   display: flex;
   justify-content: space-between;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-  // border-bottom: 1px solid $color-white;
+  align-items: center;
+
+  @include media('<phone') {
+    height: 14rem;
+  }
 }
 
 .home__header__logo {
+  width: 3.4rem;
+  height: 3.1rem;
 
+  @include media('<phone') {
+    width: 6.8rem;
+    height: 6.2rem;
+  }
 }
 
 .home__header__link {
@@ -31,7 +40,7 @@
 .home__main {
   @extend %padding;
 
-  position: relative;
+  position: sticky;
   padding-top: 10rem;
   padding-bottom: 6rem;
   display: flex;
@@ -127,7 +136,7 @@
   @extend %padding;
 
   // height: 100vh;
-  position: relative;
+  position: sticky;
   padding-top: 4rem;
   padding-bottom: 4rem;
   display: flex;
