@@ -1,6 +1,7 @@
 import Preloader from "./components/Preloader.js"
 import Home from "./pages/Home.js"
 import Project from "./pages/Project.js"
+import Canvas from "./components/Canvas/index.js"
 
 import each from 'lodash/each.js'
 import normalizeWheel from 'normalize-wheel'
@@ -11,6 +12,8 @@ class App {
 
     this.createPreloader()
 
+    this.createCanvas()
+
     this.createPages()
 
     this.addLinkListeners()
@@ -18,6 +21,12 @@ class App {
     this.addEventListeners()
 
     this.update()
+  }
+
+  createCanvas() {
+    this.canvas = new Canvas({
+      template: this.template
+    })
   }
 
   createContent() {
@@ -35,6 +44,8 @@ class App {
 
     this.onResize()
 
+    this.canvas.onPreloaded()
+
     this.page.show()
   }
 
@@ -50,7 +61,7 @@ class App {
 
   async onChange({ url, push = true}) {
     await this.page.hide()
-
+    console.log(url)
     const response = await fetch(url)
 
     if (response.status === 200) {
@@ -69,6 +80,8 @@ class App {
 
       this.content.setAttribute('data-template', this.template)
       this.content.innerHTML = divContent.innerHTML
+
+      this.canvas.onChange(this.template)
 
       this.page = this.pages[this.template]
 
@@ -91,9 +104,9 @@ class App {
   }
 
   onTouchDown (event) {
-    // if (this.canvas && this.canvas.onTouchDown) {
-    //   this.canvas.onTouchDown(event)
-    // }
+    if (this.canvas && this.canvas.onTouchDown) {
+      this.canvas.onTouchDown(event)
+    }
 
     if (this.page && this.page.onTouchDown) {
       this.page.onTouchDown(event)
@@ -101,9 +114,9 @@ class App {
   }
 
   onTouchMove (event) {
-    // if (this.canvas && this.canvas.onTouchMove) {
-    //   this.canvas.onTouchMove(event)
-    // }
+    if (this.canvas && this.canvas.onTouchMove) {
+      this.canvas.onTouchMove(event)
+    }
 
     if (this.page && this.page.onTouchDown) {
       this.page.onTouchMove(event)
@@ -111,9 +124,9 @@ class App {
   }
 
   onTouchUp (event) {
-    // if (this.canvas && this.canvas.onTouchUp) {
-    //   this.canvas.onTouchUp(event)
-    // }
+    if (this.canvas && this.canvas.onTouchUp) {
+      this.canvas.onTouchUp(event)
+    }
 
     if (this.page && this.page.onTouchDown) {
       this.page.onTouchUp(event)
@@ -125,6 +138,10 @@ class App {
 
     if (this.page && this.page.onWheel) {
       this.page.onWheel(normalizedWheel)
+    }
+
+    if (this.canvas && this.canvas.onWheel) {
+      this.canvas.onWheel(normalizedWheel)
     }
   }
 
@@ -160,11 +177,22 @@ class App {
     if (this.page && this.page.onResize) {
       this.page.onResize()
     }
+
+    requestAnimationFrame(_ => {
+      if (this.canvas && this.canvas.onResize) {
+        this.canvas.onResize()
+      }
+    })
   }
 
   update() {
     if (this.page && this.page.update) {
       this.page.update()
+    }
+
+    if (this.canvas && this.canvas.update) {
+      console.log(this.canvas)
+      this.canvas.update()
     }
 
     this.frame = window.requestAnimationFrame(this.update.bind(this))
