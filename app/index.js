@@ -2,6 +2,7 @@ import Preloader from "./components/Preloader.js"
 import Home from "./pages/Home.js"
 import Project from "./pages/Project.js"
 import Canvas from "./components/Canvas/index.js"
+import Transition from 'components/Canvas/Transition.js'
 
 import each from 'lodash/each.js'
 import normalizeWheel from 'normalize-wheel'
@@ -11,6 +12,8 @@ class App {
     this.createContent()
 
     this.createPreloader()
+
+    this.createTransition()
 
     this.createCanvas()
 
@@ -39,6 +42,10 @@ class App {
     this.preloader.once('completed', this.onPreloaded.bind(this))
   }
 
+  createTransition () {
+    this.transition = new Transition()
+  }
+
   onPreloaded() {
     this.preloader.destroy()
 
@@ -60,17 +67,27 @@ class App {
   }
 
   async onChange({ url, push = true}) {
-    await this.page.hide()
-    console.log(url)
+
     const response = await fetch(url)
 
     if (response.status === 200) {
+
       const html = await response.text()
       const div = document.createElement('div')
 
       if (push) {
         window.history.pushState({}, '', url)
       }
+
+      // edfewdfg
+
+      await this.transition.show({
+        color: '#FFFFFF'
+      })
+
+      // sdfwedfg
+
+      await this.page.hide()
 
       div.innerHTML = html
 
@@ -92,6 +109,8 @@ class App {
       this.page.show()
 
       this.addLinkListeners()
+
+      this.transition.hide()
 
     }
   }
@@ -174,6 +193,7 @@ class App {
   }
 
   onResize() {
+    // location.reload()
     if (this.page && this.page.onResize) {
       this.page.onResize()
     }
@@ -191,7 +211,6 @@ class App {
     }
 
     if (this.canvas && this.canvas.update) {
-      console.log(this.canvas)
       this.canvas.update()
     }
 

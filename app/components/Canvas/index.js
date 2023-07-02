@@ -25,8 +25,6 @@ export default class Canvas {
 
     this.onResize()
 
-    console.log('canvas created')
-
     // this.onRouteUpdate(this.template)
   }
 
@@ -34,7 +32,7 @@ export default class Canvas {
     this.renderer = new Renderer({
       alpha: true,
       antialias: true,
-      dpr: 2
+      dpr: 2 /* for retina */
     })
 
     this.gl = this.renderer.gl
@@ -68,7 +66,6 @@ export default class Canvas {
       scene: this.scene,
       sizes: this.sizes
     })
-    console.log('project created')
   }
 
   destroyProject() {
@@ -189,13 +186,13 @@ export default class Canvas {
   //   }
   // }
 
-  createProject() {
-    this.project = new Project({
-      gl: this.gl,
-      scene: this.scene,
-      sizes: this.sizes
-    })
-  }
+  // createProject() {
+  //   this.project = new Project({
+  //     gl: this.gl,
+  //     scene: this.scene,
+  //     sizes: this.sizes
+  //   })
+  // }
 
   destroyProject() {
     if (!this.project) return
@@ -209,7 +206,6 @@ export default class Canvas {
       this.destroyProject()
     }
     if (template === 'project') {
-      console.log('creating project canvss')
       this.createProject()
       this.project.show(isPreloaded)
     }

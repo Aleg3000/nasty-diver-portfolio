@@ -16,6 +16,8 @@ export default class Scroll {
 
   setLimit(limit) {
     this.state.limit = limit
+
+    this.state.target = 0
   }
 
   onTouchDown (event) {
@@ -50,7 +52,7 @@ export default class Scroll {
     this.state.current = GSAP.utils.interpolate(this.state.current, this.state.target, this.state.ease)
     this.state.current = Math.floor(this.state.current)
 
-    if (this.state.current < 0.1) {
+    if (this.state.current < 0.01) {
       this.state.current = 0
     }
 

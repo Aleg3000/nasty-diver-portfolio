@@ -19,7 +19,7 @@ export default class {
     this.y = {
       current: 0,
       target: 0,
-      lerp: 0.1
+      lerp: 0.07
     }
 
     this.scrollCurrent = {
@@ -35,7 +35,7 @@ export default class {
     this.speed = {
       current: 0,
       target: 0,
-      lerp: 0.1
+      lerp: 0.07
     }
 
     this.velocity = 2
@@ -91,7 +91,10 @@ export default class {
    * Events.
    */
   onResize (event) {
-    this.pageHeight = document.querySelector('.project__content').clientHeight
+    const h = document.querySelector('.project__wrapper').clientHeight - window.innerHeight
+
+    this.pageHeight = h
+
     this.galleryBounds = this.galleryElement.getBoundingClientRect()
 
     this.sizes = event.sizes
@@ -104,6 +107,7 @@ export default class {
     this.scroll.y = this.y.target = 0
 
     map(this.medias, media => media.onResize(event, this.scroll))
+
   }
 
   onTouchDown ({ x, y }) {
@@ -132,11 +136,9 @@ export default class {
    */
   update () {
     // this.y.target += this.velocity
-    if (this.y.target > 0) this.y.target = 0
-    if (this.y.target < -this.pageHeight) this.y.target = -this.pageHeight
 
+    this.y.target = GSAP.utils.clamp(-this.pageHeight, 0, this.y.target)
 
-    // console.log(this.y.target, -this.pageHeight)
 
     this.speed.target = (this.y.target - this.y.current) * 0.003
 
@@ -145,6 +147,7 @@ export default class {
     this.speed.current = GSAP.utils.interpolate(this.speed.current, this.speed.target, this.speed.lerp)
 
     this.y.current = GSAP.utils.interpolate(this.y.current, this.y.target, this.y.lerp)
+    this.y.current = Math.ceil(this.y.current)
 
     // if (this.scroll.y < this.y.current) {
     //   this.y.direction = 'top'
@@ -157,12 +160,10 @@ export default class {
     // if (this.scroll.y > 0) this.scroll.y = 0
     // if (this.scroll < -this.pageHeight) this.scroll.y = -this.pageHeight
 
-    // console.log(this.scroll.y, window.innerHeight)
-    // console.log(document.querySelector('.project__wrapper').clientHeight)
 
     map(this.medias, (media, index) => {
-      const offsetY = this.sizes.height * 0.5
-      const scaleY = media.mesh.scale.y / 2
+      // const offsetY = this.sizes.height * 0.5
+      // const scaleY = media.mesh.scale.y / 2
 
       // if (this.y.direction === 'top') {
       //   const y = media.mesh.position.y + scaleY

@@ -25,6 +25,8 @@ export default class {
     this.createBounds({
       sizes: this.sizes
     })
+
+    console.log('created')
   }
 
   createTexture () {
@@ -71,6 +73,7 @@ export default class {
 
     this.bounds = this.element.getBoundingClientRect()
 
+
     this.updateScale()
     this.updateX()
     this.updateY()
@@ -104,11 +107,11 @@ export default class {
   }
 
   hide () {
-    console.log('hide')
-    GSAP.to(this.program.uniforms.uAlpha, {
-      duration: 1,
+    // this.program.uniforms.uAlpha = 0
+    GSAP.fromTo(this.program.uniforms.uAlpha,{value: 1}, {
+      duration: 0.5,
       ease: 'expo.inOut',
-      value: 0
+      value: 0,
     })
   }
 
