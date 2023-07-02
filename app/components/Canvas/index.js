@@ -32,7 +32,7 @@ export default class Canvas {
     this.renderer = new Renderer({
       alpha: true,
       antialias: true,
-      dpr: 2 /* for retina */
+      dpr: window.devicePixelRatio || 1
     })
 
     this.gl = this.renderer.gl

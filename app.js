@@ -82,7 +82,7 @@ app.get('/', async (req, res) => {
 app.get('/project/:uid', async (req, res) => {
   const defaults = await handleRequest()
   const project = await client.getByUID('project', req.params.uid)
-  // console.log(project.data)
+  // console.log(project.data.body[0].items[0].image['media-mobile'])
   res.render('pages/project', {
     ...defaults,
     project

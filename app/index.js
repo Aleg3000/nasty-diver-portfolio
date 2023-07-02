@@ -46,7 +46,11 @@ class App {
     this.transition = new Transition()
   }
 
-  onPreloaded() {
+  async onPreloaded() {
+    await this.transition.show({
+      color: '#FFFFFF'
+    })
+
     this.preloader.destroy()
 
     this.onResize()
@@ -54,6 +58,8 @@ class App {
     this.canvas.onPreloaded()
 
     this.page.show()
+
+    this.transition.hide()
   }
 
   createPages() {
@@ -79,15 +85,11 @@ class App {
         window.history.pushState({}, '', url)
       }
 
-      // edfewdfg
-
       await this.transition.show({
         color: '#FFFFFF'
       })
 
-      // sdfwedfg
-
-      await this.page.hide()
+      this.page.hide()
 
       div.innerHTML = html
 

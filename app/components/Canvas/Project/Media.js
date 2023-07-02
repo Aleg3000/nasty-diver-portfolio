@@ -26,7 +26,6 @@ export default class {
       sizes: this.sizes
     })
 
-    console.log('created')
   }
 
   createTexture () {
