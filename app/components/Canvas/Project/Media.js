@@ -15,7 +15,7 @@ export default class {
 
 
     this.extra = {
-      x: 0,
+      // x: 0,
       y: 0
     }
 
@@ -74,7 +74,7 @@ export default class {
 
 
     this.updateScale()
-    this.updateX()
+    // this.updateX()
     this.updateY()
   }
 
@@ -119,12 +119,12 @@ export default class {
    */
   onResize (sizes, scroll) {
     this.extra = {
-      x: 0,
+      // x: 0,
       y: 0
     }
 
     this.createBounds(sizes)
-    this.updateX(scroll && scroll.x)
+    // this.updateX(scroll && scroll.x)
     this.updateY(scroll && scroll.y)
   }
 
@@ -139,11 +139,11 @@ export default class {
     this.mesh.scale.y = this.sizes.height * this.height
   }
 
-  updateX (x = 0) {
-    this.x = (this.bounds.left + x) / window.innerWidth
+  // updateX (x = 0) {
+  //   this.x = (this.bounds.left + x) / window.innerWidth
 
-    this.mesh.position.x = (-this.sizes.width / 2) + (this.mesh.scale.x / 2) + (this.x * this.sizes.width) + this.extra.x
-  }
+  //   this.mesh.position.x = (-this.sizes.width / 2) + (this.mesh.scale.x / 2) + (this.x * this.sizes.width) + this.extra.x
+  // }
 
   updateY (y = 0) {
     this.y = (this.bounds.top + y) / window.innerHeight
@@ -152,7 +152,7 @@ export default class {
   }
 
   update (scroll, speed) {
-    this.updateX()
+    // this.updateX()
     this.updateY(scroll.y)
 
     this.program.uniforms.uSpeed.value = speed

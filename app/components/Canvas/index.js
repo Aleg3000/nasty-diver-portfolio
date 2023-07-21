@@ -8,12 +8,6 @@ export default class Canvas {
   constructor({ template }) {
     this.template = template
 
-    this.x = {
-      start: 0,
-      distance: 0,
-      end: 0
-    }
-
     this.y = {
       start: 0,
       distance: 0,
@@ -82,16 +76,14 @@ export default class Canvas {
 
   onTouchDown(event) {
     this.isDown = true
-    this.x.start = event.touches ? event.touches[0].clientX : event.clientX
     this.y.start = event.touches ? event.touches[0].clientY : event.clientY
 
     const values = {
-      x: this.x,
       y: this.y
     }
 
-    if (this.about) {
-      this.about.onTouchDown(values)
+    if (this.project) {
+      this.project.onTouchDown(values)
     }
 
     if (this.home) {
@@ -102,14 +94,11 @@ export default class Canvas {
   onTouchMove(event) {
     if (!this.isDown) return
 
-    const x = event.touches ? event.touches[0].clientX : event.clientX
     const y = event.touches ? event.touches[0].clientY : event.clientY
 
-    this.x.end = x
     this.y.end = y
 
     const values = {
-      x: this.x,
       y: this.y
     }
 
@@ -124,14 +113,14 @@ export default class Canvas {
 
   onTouchUp(event) {
     this.isDown = false
-    const x = event.changedTouches ? event.changedTouches[0].clientX : event.clientX
+    // const x = event.changedTouches ? event.changedTouches[0].clientX : event.clientX
     const y = event.changedTouches ? event.changedTouches[0].clientY : event.clientY
 
-    this.x.end = x
+    // this.x.end = x
     this.y.end = y
 
     const values = {
-      x: this.x,
+      // x: this.x,
       y: this.y
     }
 

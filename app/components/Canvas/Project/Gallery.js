@@ -44,17 +44,17 @@ export default class Gallery {
 
   // Events
 
-  onTouchDown({ x, y }) {
+  onTouchDown({ y }) {
     this.scroll.start = this.scroll.current
   }
 
-  onTouchMove({ x, y }) {
-    const distance = x.start - x.end
+  onTouchMove({ y }) {
+    const distance = y.start - y.end
 
     this.scroll.target = this.scroll.current - distance
   }
 
-  onTouchUp({ x, y }) {
+  onTouchUp({ y }) {
 
   }
 

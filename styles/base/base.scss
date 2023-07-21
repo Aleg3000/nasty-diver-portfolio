@@ -12,6 +12,8 @@ html {
   color: $color-white;
   font-size: calc(100vw / 1600 * 10);
   line-height: 1;
+  overflow: hidden;
+  position: fixed;
 
   @include media('<phone') {
     font-size: calc(100vw / 640 * 10);
