@@ -134,8 +134,6 @@ export default class {
    * Update.
    */
   update () {
-    // this.y.target += this.velocity
-
     this.y.target = GSAP.utils.clamp(-this.pageHeight, 0, this.y.target)
 
 
